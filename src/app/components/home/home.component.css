@@ -1,0 +1,39 @@
+.divone{
+    background-image: url("https://firebasestorage.googleapis.com/v0/b/storeimagegallery.appspot.com/o/images%2FHelp%20BG.jpg?alt=media&token=4c7abd97-d70c-4d1a-94b2-3b323df51d37") ;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    height: 400px;
+}
+
+.insidedivone{
+    color :white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    align-content: center;
+    margin-right: 20px;
+}
+
+.hone{
+    float: right;
+}
+
+.p{
+    font-size:x-large;
+    color :white;
+}
+
+@media(max-width : 760px){
+    .insidedivone{
+        display: none;
+    }
+}
+
+.cardcenter{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    align-content: center;
+    margin-bottom: 10px;
+}
