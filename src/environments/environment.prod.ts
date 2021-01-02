@@ -1,3 +1,4 @@
 export const environment = {
-  production: true
+  production: true,
+  registrationUrl : "https://localhost:55018/"
 };
