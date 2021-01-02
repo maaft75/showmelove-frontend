@@ -25,6 +25,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     LoginComponent
   ],
   imports: [
+    FormsModule,
     BrowserModule,
     ReactiveFormsModule,
     RouterModule.forRoot(AppRoutes)
