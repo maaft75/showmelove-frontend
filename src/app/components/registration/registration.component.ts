@@ -1,4 +1,6 @@
+import { Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
+import { AuthService } from 'src/app/Services/auth/auth.service';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 @Component({
@@ -8,9 +10,13 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 })
 export class RegistrationComponent implements OnInit {
 
+  loaderImage : boolean = false;
   public registrationForm : FormGroup;
 
-  constructor(private fb : FormBuilder) {
+  constructor( private fb : FormBuilder, 
+    private auth : AuthService,
+    private router : Router) {
+
     this.registrationForm = this.fb.group({
       "First_Name" : ["", Validators.required],
       "Last_Name" : ["", Validators.required],
@@ -18,13 +24,23 @@ export class RegistrationComponent implements OnInit {
       "Phone_Number" : ["", Validators.required],
       "Password" : ["", Validators.required]
     })
+
    }
 
   ngOnInit(): void {
   }
 
   Register(){
-    console.log(this.registrationForm.value);
+    this.loaderImage = true;
+    this.auth.registration(this.registrationForm.value).subscribe(
+      (data) => { 
+        alert(`Registration Complete, Please Click on OK to Proceed To Login, ${data.first_Name}.`);
+         this.router.navigate(["signin"])
+      },
+      (error) => { 
+        alert(error["error"].error) 
+      }
+    )
   }
 
   get Email_Address(){
@@ -42,7 +58,7 @@ export class RegistrationComponent implements OnInit {
   get Last_Name(){
     return this.registrationForm.get("Last_Name");
   }
-
+ 
   get Password(){
     return this.registrationForm.get("Password");
   }

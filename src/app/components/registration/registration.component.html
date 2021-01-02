@@ -8,11 +8,13 @@
             <hr/>
 
             <div class="row">
-                <div class="col-sm-5">
+                <div class="col-sm-6">
+                    <label for="First_Name">First Name</label>
                     <input type="text" class="form-control" placeholder="Firstname" name="First_Name" formControlName="First_Name"/><br/>
                 </div>
 
-                <div class="col-sm-5">
+                <div class="col-sm-6">
+                    <label for="Last_Name">Last Name</label>
                     <input type="text" class="form-control" placeholder="Lastname" name="Last_Name" formControlName="Last_Name"/><br/>
                 </div>
             </div>
@@ -26,6 +28,7 @@
             </div>
 
             <div>
+                <label for="Email_Address">Email Address</label>
                 <input type="email" class="form-control" placeholder="Email Address" name="Email_Address" formControlName="Email_Address"><br/>
             </div>
 
@@ -34,7 +37,9 @@
             </div>
 
             <div>
-                <input type="email" class="form-control" placeholder="Phone Number" name="Phone_Number" formControlName="Phone_Number"><br/>
+                <label for="Phone_Number">Phone Number</label>
+                <input type="text" class="form-control" placeholder="Phone Number" name="Phone_Number" formControlName="Phone_Number">
+                <small> Format : 08012345678 </small><br/><br/>
             </div>
 
             <div class="alert alert-danger" *ngIf="Phone_Number.touched && Phone_Number.errors?.required">
@@ -42,6 +47,7 @@
             </div>
 
             <div>
+                <label for="Password">Password</label>
                 <input type="email" class="form-control" placeholder="Password" name="Password" formControlName="Password"><br/>
             </div>
 
@@ -50,7 +56,15 @@
             </div>
 
             <div>
-                <input type="submit" class="form-control btn btn-success" value="Sign Up">
+                <button *ngIf="!loaderImage" type="submit" [disabled]="!registrationForm.valid" class="form-control btn btn-success">
+                    <h6> Sign Up </h6>
+                </button>
+            </div>
+
+            <div *ngIf="loaderImage">
+                <button type="button" class="form-control btn btn-success">
+                    <img class="loading" src="https://firebasestorage.googleapis.com/v0/b/storeimagegallery.appspot.com/o/images%2Fae84325701f6d97ac4ad7e7951ac9063_w200.webp?alt=media&token=7eb12a30-3899-458a-8c5c-587c49e0b884"/>
+                </button>
             </div>
 
             <br/>
