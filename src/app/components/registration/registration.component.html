@@ -1,0 +1,59 @@
+<br/>
+<div class="majordiv">
+    <br/>
+    <div class="col-sm-7 center">
+        <form [formGroup]="registrationForm" (ngSubmit)="Register()">
+            <br/>
+            <h3 style="text-align: center;">Registration</h3>
+            <hr/>
+
+            <div class="row">
+                <div class="col-sm-6">
+                    <input type="text" class="form-control" placeholder="Firstname" formControlName="First_Name"/><br/>
+                </div>
+
+                <div class="alert alert-danger" *ngIf="First_Name.touched && First_Name.errors?.required">
+                    First Name is required. <br/>
+                </div>
+
+                <div class="col-sm-6">
+                    <input type="text" class="form-control" placeholder="Lastname" formControlName="Last_Name"/><br/>
+                </div>
+
+                <div class="alert alert-danger" *ngIf="Last_Name.touched && Last_Name.errors?.required">
+                    Last Name is required. <br/>
+                </div>
+            </div>
+
+            <div>
+                <input type="email" class="form-control" placeholder="Email Address" formControlName="Email_Address"><br/>
+            </div>
+
+            <div class="alert alert-danger" *ngIf="Email_Address.touched && Email_Address.errors?.required">
+                Email Address is required. <br/>
+            </div>
+
+            <div>
+                <input type="email" class="form-control" placeholder="Phone Number" formControlName="Phone_Number"><br/>
+            </div>
+
+            <div class="alert alert-danger" *ngIf="Phone_Number.touched && Phone_Number.errors?.required">
+                Phone number is required. <br/>
+            </div>
+
+            <div>
+                <input type="email" class="form-control" placeholder="Password" formControlName="Password"><br/>
+            </div>
+
+            <div class="alert alert-danger" *ngIf="Password.touched && Password.errors?.required">
+                Password is required. <br/>
+            </div>
+
+            <div>
+                <input type="submit" class="form-control btn btn-success" value="Sign Up">
+            </div>
+
+            <br/>
+        </form>
+    </div>    
+</div>
