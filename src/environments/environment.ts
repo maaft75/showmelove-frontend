@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-  registrationUrl : "https://localhost:55018/"
+  authUrl : "https://192.168.43.121/"
 };
 
 /*

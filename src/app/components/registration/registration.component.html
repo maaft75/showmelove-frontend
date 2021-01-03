@@ -9,26 +9,30 @@
 
             <div class="row">
                 <div class="col-sm-6">
-                    <label for="First_Name">First Name</label>
+                    <label for="First_Name"><b>First Name</b></label>
                     <input type="text" class="form-control" placeholder="Firstname" name="First_Name" formControlName="First_Name"/><br/>
                 </div>
 
                 <div class="col-sm-6">
-                    <label for="Last_Name">Last Name</label>
+                    <label for="Last_Name"><b>Last Name</b></label>
                     <input type="text" class="form-control" placeholder="Lastname" name="Last_Name" formControlName="Last_Name"/><br/>
+                </div>
+
+                <div class="col-sm-6">
+                    <div class="alert alert-danger" *ngIf="First_Name.touched && First_Name.errors?.required">
+                        <small> First Name is required. </small><br/>
+                    </div>
+                </div>
+
+                <div class="col-sm-6">
+                    <div class="alert alert-danger" *ngIf="Last_Name.touched && Last_Name.errors?.required">
+                        <small> Last Name is required. </small><br/>
+                    </div>
                 </div>
             </div>
 
-            <div class="alert alert-danger" *ngIf="Last_Name.touched && Last_Name.errors?.required">
-                <small> Last Name is required. </small><br/>
-            </div>
-
-            <div class="alert alert-danger" *ngIf="First_Name.touched && First_Name.errors?.required">
-                <small> First Name is required. </small><br/>
-            </div>
-
             <div>
-                <label for="Email_Address">Email Address</label>
+                <label for="Email_Address"><b>Email Address</b></label>
                 <input type="email" class="form-control" placeholder="Email Address" name="Email_Address" formControlName="Email_Address"><br/>
             </div>
 
@@ -37,7 +41,7 @@
             </div>
 
             <div>
-                <label for="Phone_Number">Phone Number</label>
+                <label for="Phone_Number"><b>Phone Number</b></label>
                 <input type="text" class="form-control" placeholder="Phone Number" name="Phone_Number" formControlName="Phone_Number">
                 <small> Format : 08012345678 </small><br/><br/>
             </div>
@@ -47,8 +51,8 @@
             </div>
 
             <div>
-                <label for="Password">Password</label>
-                <input type="email" class="form-control" placeholder="Password" name="Password" formControlName="Password"><br/>
+                <label for="Password"><b>Password</b></label>
+                <input type="password" class="form-control" placeholder="Password" name="Password" formControlName="Password"><br/>
             </div>
 
             <div class="alert alert-danger" *ngIf="Password.touched && Password.errors?.required">

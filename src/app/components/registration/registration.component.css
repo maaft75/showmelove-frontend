@@ -11,11 +11,10 @@
 }
 
 .majordiv{
-    margin-left: 10px;
-    margin-right: 10px;
     display: flex;
     align-self: center;
     align-items: center;
+    margin: 0 10px 0 10px;
     align-content: center;
     justify-content: center;
 }
