@@ -1,4 +1,4 @@
 export const environment = {
   production: true,
-  authUrl : "https://192.168.43.121/"
+  authUrl : "https://crowdfunding-backend.herokuapp.com"
 };
