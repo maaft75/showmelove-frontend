@@ -27,12 +27,13 @@ export class LoginComponent implements OnInit {
 
   Login(){
     this.button = false;
-    console.log(this.loginForm.value);
+    //console.log(this.loginForm.value);
     this.auth.login(this.loginForm.value).subscribe(
       (data) => { 
         alert(`Logged in successfully`);
         this.auth.saveID(data.id);
         this.auth.saveToken(data.token);
+        this.router.navigate(["dashboard"]);
     },
       (error) => { 
         alert(`${error.error.error}`); 

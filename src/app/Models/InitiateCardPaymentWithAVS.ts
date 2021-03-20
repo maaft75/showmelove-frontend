@@ -1,0 +1,20 @@
+export interface InitiateCardPaymentWithAVS{
+    pbfPubKey: string,
+    cardno: string,
+    cvv: string,
+    expirymonth: string,
+    expiryyear: string,
+    currency: string,
+    amount: string,
+    email: string,
+    ip: string,
+    suggested_auth: string,
+    billingzip: string,
+    billingcity: string,
+    billingaddress: string,
+    billingstate: string,
+    billingcountry: string,
+    phonenumber: string,
+    txRef: string,
+    redirect_url: string
+  }

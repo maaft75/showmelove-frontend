@@ -35,10 +35,11 @@ export class RegistrationComponent implements OnInit {
     this.auth.registration(this.registrationForm.value).subscribe(
       (data) => { 
         alert(`Registration Complete, Please Click on OK to Proceed To Login, ${data.first_Name}.`);
-         this.router.navigate(["signin"])
+        this.router.navigate(["signin"]);
       },
       (error) => { 
-        alert(error["error"].error) 
+        alert(error["error"].error);
+        location.reload();
       }
     )
   }

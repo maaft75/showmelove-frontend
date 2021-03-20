@@ -15,6 +15,8 @@ import { RegistrationComponent } from './components/registration/registration.co
 import { LoginComponent } from './components/login/login.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
+import { DashboardComponent } from './components/dashboard/dashboard.component';
+import { PaymentresponseComponent } from './components/paymentresponse/paymentresponse.component';
 
 @NgModule({
   declarations: [
@@ -23,7 +25,9 @@ import { HttpClientModule } from '@angular/common/http';
     HomeComponent,
     FooterComponent,
     RegistrationComponent,
-    LoginComponent
+    LoginComponent,
+    DashboardComponent,
+    PaymentresponseComponent
   ],
   imports: [
     FormsModule,
