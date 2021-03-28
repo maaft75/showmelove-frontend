@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { AuthService } from 'src/app/Services/auth/auth.service';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-login',
@@ -32,7 +33,7 @@ export class LoginComponent implements OnInit {
       (data) => {
         this.auth.saveID(data.id);
         this.auth.saveToken(data.token);
-        this.router.navigate(["dashboard"]);
+        window.location.href = environment.frontendUrl + "dashboard";
         alert(`Logged in successfully`);
     },
       (error) => { 
