@@ -28,7 +28,7 @@ export class DashboardComponent implements OnInit {
     })
 
     //Get Fundraiser created by Logged in User
-    this.fundraiserService.getFundraiser(1).subscribe(
+    this.fundraiserService.getFundraiser(Number(this.Id)).subscribe(
       (data) => 
       {
         this.fundRaisersByLoggedInUser = data;
