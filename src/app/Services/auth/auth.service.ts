@@ -1,17 +1,18 @@
 import { Observable } from 'rxjs';
 import { Injectable } from '@angular/core';
-import { User } from 'src/app/Interfaces/User';
+import { User } from 'src/app/Models/User';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
-import { Registration } from 'src/app/Interfaces/Registration';
+import { Registration } from 'src/app/Models/Registration';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
 
-  private loginUrl : string = environment.authUrl + "api/users/login";
-  private registrationUrl : string = environment.authUrl + "api/users/registration";
+  private userUrl : string = environment.apiUrl + "users";
+  private loginUrl : string = environment.apiUrl + "users/login";
+  private registrationUrl : string = environment.apiUrl + "users/registration";
 
   constructor(private http : HttpClient) { }
 
@@ -21,6 +22,10 @@ export class AuthService {
 
   login(data) : Observable<User>{
     return this.http.post<any>(this.loginUrl, data);
+  }
+
+  getUserDetails(id : Number) : Observable<any>{
+    return this.http.get<any>(this.userUrl + "/" + id);
   }
 
   saveToken(token){
@@ -39,7 +44,15 @@ export class AuthService {
     return localStorage.getItem("id");
   }
 
-  getHeaders(){
+  deleteID(){
+    localStorage.removeItem("id");
+  }
+
+  deleteToken(){
+    localStorage.removeItem("token");
+  }
+
+  getHeaders() : HttpHeaders {
     let headers = new HttpHeaders();
     return headers.set("Authorization", `Bearer ${this.getToken()}`);
   }

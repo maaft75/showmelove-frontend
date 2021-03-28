@@ -37,7 +37,8 @@ export class RegistrationComponent implements OnInit {
         alert(`Registration Complete, Please Click on OK to Proceed To Login, ${data.first_Name}.`);
         this.router.navigate(["signin"]);
       },
-      (error) => { 
+      (error) => {
+        console.log(error); 
         alert(error["error"].error);
         location.reload();
       }

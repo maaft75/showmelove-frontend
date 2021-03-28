@@ -18,14 +18,17 @@
   
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav mr-auto">
-        <li class="nav-item">
+        <li class="nav-item active">
           <a class="nav-link" href="howitworks">How It Works</a>
         </li>
-        <li class="nav-item">
+        <li class="nav-item active" *ngIf="!removeButton">
           <a class="nav-link" href="signup">Sign Up</a>
         </li>
-        <li class="nav-item">
+        <li class="nav-item active" *ngIf="!removeButton">
           <a class="nav-link" href="signin">Sign In</a>
+        </li>
+        <li class="nav-item active" *ngIf="removeButton">
+          <a class="nav-link" href="signin">Your Profile</a>
         </li>
         <!-- <li class="nav-item dropdown">
           <li class="nav-item active">
@@ -52,9 +55,15 @@
 
       </ul>
 
-      <form class="form-inline my-2 my-lg-0">
-        <button class="btn btn-success btn-sm my-2 my-sm-0" style="color: white;" type="submit">
+      <form class="form-inline my-2 my-lg-0" *ngIf="!removeButton">
+        <a class="btn btn-danger btn-sm my-2 my-sm-0" href="/signin" style="color: white;" type="submit">
           Start A Fundraise
+        </a>
+      </form>
+
+      <form class="form-inline my-2 my-lg-0" *ngIf="removeButton" (click)="signOut()">
+        <button class="btn btn-success btn-sm my-2 my-sm-0" style="color: white;" type="submit">
+          Sign Out 
         </button>
       </form>
 

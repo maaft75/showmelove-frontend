@@ -1,1 +1,44 @@
-<p>dashboard works!</p>
+<br/>
+
+<div class="container-fluid">
+
+    <div class="row">
+        <div class="col-sm-12 create" style="font-size:xx-large;">
+            {{loggedInUser}}'s Dashboard
+        </div>
+        
+        <div class="col-sm-12 create">
+            <button class="btn btn-success btn-md" style="color:white;" type="submit">
+                Create a Fundraiser
+            </button>
+        </div>
+    </div>
+
+    <br>
+    <br>
+    <br>
+    <br>
+
+    <div class="container">
+        <h4>All Fundraisers created by {{loggedInUser}}.</h4>
+        <br>
+        <table class="table">
+            <thead>
+              <tr>
+                <th scope="col">Title</th>
+                <th scope="col">Goal</th>
+                <th scope="col">Fundraiser Link</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let fundRaiserByLoggedInUserof fundRaisersByLoggedInUser">
+                <th scope="row">1</th>
+                <td>fundRaisersByLoggedInUser.Title</td>
+                <td>fundRaisersByLoggedInUser.amount_Goal</td>
+                <td>fundRaisersByLoggedInUser.link</td>
+              </tr>
+            </tbody>
+          </table>
+    </div>
+
+</div>

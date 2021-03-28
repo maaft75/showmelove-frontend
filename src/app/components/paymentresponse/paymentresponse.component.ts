@@ -7,11 +7,15 @@ import { ActivatedRoute } from '@angular/router';
   styleUrls: ['./paymentresponse.component.css']
 })
 export class PaymentresponseComponent implements OnInit {
-
+  
   constructor(private activatedRoute : ActivatedRoute) { }
 
   ngOnInit(): void {
-    this.activatedRoute.queryParams.subscribe((p) => {console.log(p)})
-  }
+    this.activatedRoute.queryParams.subscribe(
+      (p) => 
+      {
+        console.log(JSON.parse(p.response));
+      }
+  )}
 
 }
