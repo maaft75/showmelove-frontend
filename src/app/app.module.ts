@@ -17,6 +17,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { PaymentresponseComponent } from './components/paymentresponse/paymentresponse.component';
+import { CreatefundraiserComponent } from './components/createfundraiser/createfundraiser.component';
 
 @NgModule({
   declarations: [
@@ -27,7 +28,8 @@ import { PaymentresponseComponent } from './components/paymentresponse/paymentre
     RegistrationComponent,
     LoginComponent,
     DashboardComponent,
-    PaymentresponseComponent
+    PaymentresponseComponent,
+    CreatefundraiserComponent
   ],
   imports: [
     FormsModule,

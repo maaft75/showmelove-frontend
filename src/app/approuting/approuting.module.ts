@@ -6,13 +6,15 @@ import { DashboardComponent } from '../components/dashboard/dashboard.component'
 import { RegistrationComponent } from '../components/registration/registration.component';
 import { PaymentresponseComponent } from '../components/paymentresponse/paymentresponse.component';
 import { AuthGuard } from '../Guards/AuthGuard/auth-guard.guard';
+import { CreatefundraiserComponent } from '../components/createfundraiser/createfundraiser.component';
 
 export const AppRoutes : Routes = [
   {path : "home" , component : HomeComponent },
   {path : "signin" , component : LoginComponent },
-  {path : "dashboard" , component : DashboardComponent, canActivate : [AuthGuard] },
   {path : "signup" , component : RegistrationComponent },
   {path : "paymentresponse" , component : PaymentresponseComponent},
+  {path : "dashboard" , component : DashboardComponent, canActivate : [AuthGuard] },
+  {path : "startfundraiser", component : CreatefundraiserComponent, canActivate : [AuthGuard]},
   {path : "**", redirectTo : "/home", pathMatch : "full"}
 ]
 

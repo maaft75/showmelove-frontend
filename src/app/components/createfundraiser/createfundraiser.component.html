@@ -1,0 +1,81 @@
+<br/>
+<div class="majordiv">
+        
+    <div class="col-sm-10">
+
+        <form [formGroup]="fundraiserForm" (ngSubmit)="Create()">
+            <!-- "image" : ["", Validators.required] -->   
+
+            <br/>
+            <h3 style="text-align: center;">Create A Fundraiser.</h3>
+            <hr/>
+
+            <div>
+                <label for="title"><b>Campaign Title</b></label>
+                <input type="text" class="form-control" placeholder="Campaign Title" name="title" formControlName="title"><br/>
+            </div>
+    
+            <div class="alert alert-danger" *ngIf="title.touched && title.errors?.required">
+                <small> Campaign Title is required. </small><br/>
+            </div>
+            
+            <div>
+                <label for="purpose"><b>Campaign Purpose</b></label>
+                <input type="text" class="form-control" placeholder="Campaign Purpose" name="purpose" formControlName="purpose"><br/>
+            </div>
+    
+            <div class="alert alert-danger" *ngIf="purpose.touched && purpose.errors?.required">
+                <small> Campaign Purpose is required. </small><br/>
+            </div>
+
+            <div>
+                <label for="type"><b>Campaign Type</b></label>
+                <input type="text" class="form-control" placeholder="Campaign Type" name="type" formControlName="type"><br/>
+            </div>
+    
+            <div class="alert alert-danger" *ngIf="type.touched && type.errors?.required">
+                <small> Campaign Type is required. </small><br/>
+            </div>
+
+            <div>
+                <label for="amount_Goal"><b>Goal Amount</b></label>
+                <input type="number" class="form-control" placeholder="Goal Amount" name="amount_Goal" formControlName="amount_Goal"><br/>
+            </div>
+    
+            <div class="alert alert-danger" *ngIf="amount_Goal.touched && amount_Goal.errors?.required">
+                <small> Goal Amount is required. </small><br/>
+            </div>
+
+            <div>
+                <label for="postalCode"><b>Postal Code</b></label>
+                <input type="number" class="form-control" placeholder="Postal Code" name="postalCode" formControlName="postalCode"><br/>
+            </div>
+    
+            <div class="alert alert-danger" *ngIf="postalCode.touched && postalCode.errors?.required">
+                <small> Postal Code is required. </small><br/>
+            </div>
+
+            <div>
+                <label for="description"><b>Description</b></label>
+                <input type="text" class="form-control" placeholder="Description" name="description" formControlName="description"><br/>
+            </div>
+    
+            <div class="alert alert-danger" *ngIf="description.touched && description.errors?.required">
+                <small> Description is required. </small><br/>
+            </div>
+
+            <div>
+                <button type="submit" class="form-control btn btn-success" style="color: white;">Submit</button>
+            </div>
+
+            <br>
+            <br>
+            <br>
+
+        </form>
+    </div>
+</div>
+
+<br>
+<br>
+<br>
