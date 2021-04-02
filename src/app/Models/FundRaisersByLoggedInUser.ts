@@ -1,6 +1,7 @@
 export interface fundRaisersByLoggedInUser{
 
-        Title : string,
+        title : string,
         amount_Goal: number,
+        current_Amount : number,
         link: string
 }
