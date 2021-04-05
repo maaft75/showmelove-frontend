@@ -61,7 +61,7 @@ export class CreatefundraiserComponent implements OnInit {
           "type" : ["", Validators.required],
           "amount_Goal" : ["", Validators.required],
           "postalCode" : ["", Validators.required],
-          "image" : ["", Validators.required],
+          "image" : ["/assets/download.png", Validators.required],
           "description" : ["", Validators.required],
           "campaignOwner" : this.fb.group({
             "id": [this.user.id],
@@ -76,21 +76,27 @@ export class CreatefundraiserComponent implements OnInit {
   }
 
   Create(){
-    this.fundraiserForm.patchValue( { imageUrl : this.response });
-    console.log(this.fundraiserForm.value);
-    /*if(this.fundraiserForm.valid){
+    this.fundraiserForm.patchValue( { image : this.response });
+    //console.log(this.fundraiserForm.value);
+
+    if(this.fundraiserForm.valid){
       
       this.fundraiserService.createFundraiser(this.fundraiserForm.value).subscribe(
-        (data) => { 
-          alert(`Fundraiser with title : "${data.title}" successfully createc.`);
+        (data) => 
+        { 
+          alert(`Fundraiser with title : "${data.title}" successfully created.`);
           window.location.href = environment.frontendUrl + "dashboard";
         },
-        (error) => { alert(error.error); location.reload()}
+        (error) => 
+        { 
+          alert(error.error); 
+          location.reload()
+        }
       )}
     else
     {
       alert("Kindly ensure all fields are filled and valid.");
-    }*/
+    }
   }
 
   showPreview(event : any){
@@ -115,11 +121,11 @@ export class CreatefundraiserComponent implements OnInit {
       finalize( () => {
         fileRef.getDownloadURL().subscribe( (url) => {
         this.response = url;
+        //console.log(this.response);
         alert('Image Uploaded!');
         this.uploadingImage = true;
         this.tryUploadImage = false;
         this.completedUpload = true;
-        this.fundraiserForm.patchValue( { imageUrl : this.response });
       })
     })).subscribe()
   }
