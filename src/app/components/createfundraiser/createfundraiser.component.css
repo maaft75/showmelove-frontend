@@ -2,10 +2,30 @@
     display: flex;
     align-self: center;
     align-items: center;
-    margin: 0 10px 0 10px;
+    margin: 0 200px 0 200px;
     align-content: center;
     justify-content: center;
     -webkit-box-shadow: 2px 2px 13px -4px rgba(224,20,224,1);
     -moz-box-shadow: 2px 2px 13px -4px rgba(224,20,224,1);
     box-shadow: 2px 2px 13px -4px rgba(224,20,224,1);
 }
+
+@media (max-width: 1000px) {
+    .majordiv{
+        display: flex;
+        align-self: center;
+        align-items: center;
+        margin: 0 10px 0 10px;
+        align-content: center;
+        justify-content: center;
+        -webkit-box-shadow: 2px 2px 13px -4px rgba(224,20,224,1);
+        -moz-box-shadow: 2px 2px 13px -4px rgba(224,20,224,1);
+        box-shadow: 2px 2px 13px -4px rgba(224,20,224,1);
+    }
+  }
+
+  .image{
+      width: 100px;
+      height: 100px;
+      border-radius: 50%;
+  }

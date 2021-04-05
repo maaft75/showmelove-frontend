@@ -1,6 +1,10 @@
+import { finalize } from 'rxjs/operators';
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { AngularFireStorage } from '@angular/fire/storage';
+import { environment } from 'src/environments/environment';
 import { AuthService } from 'src/app/Services/auth/auth.service';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FundraiserService } from 'src/app/Services/fundraiser/fundraiser.service';
 
 @Component({
   selector: 'app-createfundraiser',
@@ -8,20 +12,28 @@ import { AuthService } from 'src/app/Services/auth/auth.service';
   styleUrls: ['./createfundraiser.component.css']
 })
 export class CreatefundraiserComponent implements OnInit {
-
   
+  response : any;
   private user : any;
-  private userId : Number;
-  fundraiserForm : FormGroup;
+  selectedImage : any;
+  tryUploadImage : boolean = true;
+  uploadingImage : boolean = true;
+  completedUpload : boolean = false;
+  public fundraiserForm : FormGroup;
+  defaultImageUrl : string = "/assets/download.png";
 
-  constructor(private fb : FormBuilder, private authService : AuthService) { 
+  constructor(
+    private fb : FormBuilder, 
+    private authService : AuthService, 
+    private storage : AngularFireStorage,
+    private fundraiserService : FundraiserService) { 
     this.fundraiserForm = this.fb.group({
       "title" : ["", Validators.required],
       "purpose" : ["", Validators.required],
       "type" : ["", Validators.required],
       "amount_Goal" : ["", Validators.required],
       "postalCode" : ["", Validators.required],
-      "image" : [""],
+      "image" : ["", Validators.required],
       "description" : ["", Validators.required],
       "campaignOwner" : this.fb.group({
         "id": ["", Validators.required],
@@ -38,9 +50,8 @@ export class CreatefundraiserComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.userId = Number(this.authService.getID());
 
-    this.authService.getUserDetails(this.userId).subscribe(
+    this.authService.getUserDetails(Number(this.authService.getID())).subscribe(
       (data) => 
       {
         this.user = data;
@@ -50,7 +61,7 @@ export class CreatefundraiserComponent implements OnInit {
           "type" : ["", Validators.required],
           "amount_Goal" : ["", Validators.required],
           "postalCode" : ["", Validators.required],
-          "image" : [""],
+          "image" : ["", Validators.required],
           "description" : ["", Validators.required],
           "campaignOwner" : this.fb.group({
             "id": [this.user.id],
@@ -65,9 +76,58 @@ export class CreatefundraiserComponent implements OnInit {
   }
 
   Create(){
+    this.fundraiserForm.patchValue( { imageUrl : this.response });
     console.log(this.fundraiserForm.value);
+    /*if(this.fundraiserForm.valid){
+      
+      this.fundraiserService.createFundraiser(this.fundraiserForm.value).subscribe(
+        (data) => { 
+          alert(`Fundraiser with title : "${data.title}" successfully createc.`);
+          window.location.href = environment.frontendUrl + "dashboard";
+        },
+        (error) => { alert(error.error); location.reload()}
+      )}
+    else
+    {
+      alert("Kindly ensure all fields are filled and valid.");
+    }*/
   }
 
+  showPreview(event : any){
+    if(event.target.files && event.target.files[0]){
+      const reader = new FileReader();
+      reader.onload = (e : any) => this.defaultImageUrl = e.target.result;
+      reader.readAsDataURL(event.target.files[0]);
+      this.selectedImage = event.target.files[0];
+    }
+    else{
+      this.defaultImageUrl = "/assets/download.png";
+      this.selectedImage = null;
+    }
+  }
+
+  uploadImage(){
+    this.uploadingImage = false;
+    let filepath = `images/${this.selectedImage.name}_${new Date().getTime()}`;
+    let fileRef = this.storage.ref(filepath);
+
+    this.storage.upload(filepath, this.selectedImage).snapshotChanges().pipe(
+      finalize( () => {
+        fileRef.getDownloadURL().subscribe( (url) => {
+        this.response = url;
+        alert('Image Uploaded!');
+        this.uploadingImage = true;
+        this.tryUploadImage = false;
+        this.completedUpload = true;
+        this.fundraiserForm.patchValue( { imageUrl : this.response });
+      })
+    })).subscribe()
+  }
+  
+  get image(){
+    return this.fundraiserForm.get("image");
+  }
+  
   get title(){
     return this.fundraiserForm.get("title");
   }

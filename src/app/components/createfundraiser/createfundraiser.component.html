@@ -1,7 +1,7 @@
 <br/>
 <div class="majordiv">
         
-    <div class="col-sm-10">
+    <div class="col-sm-9">
 
         <form [formGroup]="fundraiserForm" (ngSubmit)="Create()">
             <!-- "image" : ["", Validators.required] -->   
@@ -9,6 +9,39 @@
             <br/>
             <h3 style="text-align: center;">Create A Fundraiser.</h3>
             <hr/>
+
+            <div>
+                <div>
+
+                    <div class="col-sm-12">
+                        <label for="image"><b>Image</b></label>
+                        <div>
+                            <img [src]="defaultImageUrl" class="image" (click)="fileUploader.click()">
+                        </div>
+                    </div>
+
+                    <br>
+
+                    <div class="row">
+                        <div class="col-sm-6">
+                            <input type="file" accept="image/*" (change)="showPreview($event)" #fileUploader class="form-control" formControlName="image" style="border: none;" name="image">
+                        </div>
+                        <br>                        
+                        <div class="col-sm-3"  style="color: white;">
+                            <a (click)="uploadImage()" class="form-control btn btn-success btn-sm" *ngIf="uploadingImage && tryUploadImage">Upload</a>
+                            <a class="form-control btn btn-success btn-sm" *ngIf="!uploadingImage">Uploading...</a>
+                            <a class="form-control btn btn-success btn-sm" *ngIf="completedUpload">Done</a>
+                        </div>
+                    </div>
+                    <br/>
+
+                </div>
+
+                <div class="alert alert-danger" *ngIf="image.touched && image.errors?.required">
+                    <small> Image is required. </small><br/>
+                </div>
+                
+            </div>
 
             <div>
                 <label for="title"><b>Campaign Title</b></label>
@@ -65,7 +98,7 @@
             </div>
 
             <div>
-                <button type="submit" class="form-control btn btn-success" style="color: white;">Submit</button>
+                <button type="submit" [disabled]="!fundraiserForm.valid" class="form-control btn btn-success" style="color: white;">Submit</button>
             </div>
 
             <br>

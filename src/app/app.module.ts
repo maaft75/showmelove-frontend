@@ -1,21 +1,24 @@
 //Router
 import { AppRoutes } from './approuting/approuting.module';
+import { environment } from 'src/environments/environment';
 
 //Modules
-import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
+import { AngularFireModule} from '@angular/fire';
+import { HttpClientModule } from '@angular/common/http';
+import { BrowserModule } from '@angular/platform-browser';
+import { AngularFireStorageModule } from '@angular/fire/storage';
 
 //Components
 import { AppComponent } from './app.component';
-import { NavbarComponent } from './components/navbar/navbar.component';
 import { HomeComponent } from './components/home/home.component';
-import { FooterComponent } from './components/footer/footer.component';
-import { RegistrationComponent } from './components/registration/registration.component';
-import { LoginComponent } from './components/login/login.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { HttpClientModule } from '@angular/common/http';
+import { LoginComponent } from './components/login/login.component';
+import { FooterComponent } from './components/footer/footer.component';
+import { NavbarComponent } from './components/navbar/navbar.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
+import { RegistrationComponent } from './components/registration/registration.component';
 import { PaymentresponseComponent } from './components/paymentresponse/paymentresponse.component';
 import { CreatefundraiserComponent } from './components/createfundraiser/createfundraiser.component';
 
@@ -36,7 +39,9 @@ import { CreatefundraiserComponent } from './components/createfundraiser/createf
     BrowserModule,
     HttpClientModule,
     ReactiveFormsModule,
-    RouterModule.forRoot(AppRoutes)
+    AngularFireStorageModule,
+    RouterModule.forRoot(AppRoutes),
+    AngularFireModule.initializeApp(environment.firebaseConfig)
   ],
   providers: [],
   bootstrap: [AppComponent]
