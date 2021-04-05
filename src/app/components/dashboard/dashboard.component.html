@@ -3,47 +3,43 @@
 <div class="container-fluid">
 
     <div class="row">
-        <div class="col-sm-12 create" style="font-size:xx-large;">
-            {{loggedInUser}}'s Dashboard
+
+        <div class="col-sm-6">
+
+          <div class="col-sm-12 create" style="font-size:xx-large;text-align: center;">
+              {{loggedInUser}}'s Dashboard
+          </div>
+          
+          <div class="col-sm-12 create">
+              <a class="btn btn-success btn-md" href="/startfundraiser" style="color:white;" type="submit">
+                  Create a Fundraiser
+              </a>
+          </div>
+
         </div>
         
-        <div class="col-sm-12 create">
-            <a class="btn btn-success btn-md" href="/startfundraiser" style="color:white;" type="submit">
-                Create a Fundraiser
-            </a>
+        <div class="col-sm-6">
+
+          <h4 style="text-align: center;">All Fundraisers created by {{loggedInUser}}.</h4>
+
+          <div class="col-sm-8 center">
+
+            <br>
+
+            <ul *ngFor="let fundRaiserByLoggedInUser of fundRaisersByLoggedInUser" style="font-size: larger;">
+
+              <li> <a [href]="fundRaiserByLoggedInUser.link" > <h5>{{ fundRaiserByLoggedInUser.title }}</h5> </a></li>
+
+            </ul>
+
+          </div>
         </div>
+
     </div>
 
     <br>
     <br>
     <br>
     <br>
-
-    <h4 style="text-align: center;">All Fundraisers created by {{loggedInUser}}.</h4>
-
-    <div class="col-sm-8 center">
-        
-        <br>
-        <table class="table">
-            <thead>
-              <tr>
-                <th scope="col">Title</th>
-                <th scope="col">Goal</th>
-                <th scope="col">Current Amount</th>
-                <th scope="col">Fundraiser Link</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr *ngFor="let fundRaiserByLoggedInUser of fundRaisersByLoggedInUser">
-                <td>{{ fundRaiserByLoggedInUser.title }}</td>
-                <td>{{ fundRaiserByLoggedInUser.amount_Goal }}</td>
-                <td>{{ fundRaiserByLoggedInUser.current_Amount}}</td>
-                <td> <a [href]="fundRaiserByLoggedInUser.link"> {{ fundRaiserByLoggedInUser.link | slice: 0 : 21 }}... </a></td>
-                <td> <button class="btn btn-danger btn-sm">STOP</button> </td>
-              </tr>
-            </tbody>
-          </table>
-
-    </div>
 
 </div>

@@ -21,6 +21,7 @@ import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { RegistrationComponent } from './components/registration/registration.component';
 import { PaymentresponseComponent } from './components/paymentresponse/paymentresponse.component';
 import { CreatefundraiserComponent } from './components/createfundraiser/createfundraiser.component';
+import { FundraiserComponent } from './components/fundraiser/fundraiser.component';
 
 @NgModule({
   declarations: [
@@ -32,7 +33,8 @@ import { CreatefundraiserComponent } from './components/createfundraiser/createf
     LoginComponent,
     DashboardComponent,
     PaymentresponseComponent,
-    CreatefundraiserComponent
+    CreatefundraiserComponent,
+    FundraiserComponent
   ],
   imports: [
     FormsModule,
