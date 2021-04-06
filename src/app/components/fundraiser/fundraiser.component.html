@@ -16,6 +16,10 @@
             <p>  {{ fundraiser?.description | uppercase }} </p>
             <hr/>
             <h5> CREATED BY : {{ fundraiser?.campaignOwner.first_Name }} {{ fundraiser?.campaignOwner.last_Name }} </h5>
+            <hr/>
+            <h5> {{ fundraiser?.current_Amount |currency:"NGN":"#" }} out of {{ fundraiser?.amount_Goal |currency:"NGN":"#" }} contributed. </h5>
+            <hr/>
+            <button class="btn btn-success btn-md">Donate</button>
         </div>
     </div>
 
