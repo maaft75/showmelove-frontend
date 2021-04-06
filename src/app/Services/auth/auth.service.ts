@@ -10,9 +10,9 @@ import { Registration } from 'src/app/Models/Registration';
 })
 export class AuthService {
 
-  private userUrl : string = environment.apiUrl + "users";
-  private loginUrl : string = environment.apiUrl + "users/login";
-  private registrationUrl : string = environment.apiUrl + "users/registration";
+  private userUrl : string = environment.usersApiUrl;
+  private loginUrl : string = environment.usersApiUrl + "login";
+  private registrationUrl : string = environment.usersApiUrl + "registration";
 
   constructor(private http : HttpClient) { }
 

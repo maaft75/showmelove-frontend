@@ -1,6 +1,7 @@
 export const environment = {
   production: true,
-  apiUrl : "https://crowdfunding-backend.herokuapp.com/api/v1/",
+  usersApiUrl : "https://192.168.43.121:444/api/v1/users/",
+  fundraisingApiUrl : "https://192.168.43.121:444/api/v1/fundraiser/",
   frontendUrl : "https://showmelove.netlify.app/",
   firebaseConfig : {
     apiKey: "AIzaSyD1iaa_9vpSAAdGspHVJaCPDRWbUZFnYKc",

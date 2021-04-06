@@ -4,7 +4,8 @@
 
 export const environment = {
   production: false,
-  apiUrl : "https://192.168.43.121:444/api/v1/",
+  usersApiUrl : "https://192.168.43.121:444/api/v1/users/",
+  fundraisingApiUrl : "https://192.168.43.121:444/api/v1/fundraiser/",
   frontendUrl : "http://localhost:4200/",
   firebaseConfig : {
     apiKey: "AIzaSyD1iaa_9vpSAAdGspHVJaCPDRWbUZFnYKc",
