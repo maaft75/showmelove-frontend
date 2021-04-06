@@ -9,6 +9,7 @@ import { FundraiserService } from 'src/app/Services/fundraiser/fundraiser.servic
 })
 export class FundraiserComponent implements OnInit {
 
+  public fundraiser : any;
   constructor(private activatedRoute : ActivatedRoute, private fundraiserService : FundraiserService) { }
 
   ngOnInit(): void {
@@ -16,7 +17,7 @@ export class FundraiserComponent implements OnInit {
       (param) => {
         console.log(param.fundraiserId);
         this.fundraiserService.getFundraiserByFundraisingId(param.fundraiserId).subscribe(
-          data => {console.log(data)}
+          data => {console.log(data); this.fundraiser = data}
         )
       }
     )

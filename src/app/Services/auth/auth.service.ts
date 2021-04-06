@@ -25,7 +25,7 @@ export class AuthService {
   }
 
   getUserDetails(id : Number) : Observable<any>{
-    return this.http.get<any>(this.userUrl + "/" + id);
+    return this.http.get<any>(this.userUrl + id);
   }
 
   saveToken(token){
