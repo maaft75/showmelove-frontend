@@ -1,5 +1,6 @@
 import { ActivatedRoute } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
+import { Fundraiser } from 'src/app/Models/Fundraiser';
 import { FundraiserService } from 'src/app/Services/fundraiser/fundraiser.service';
 
 @Component({
@@ -9,7 +10,7 @@ import { FundraiserService } from 'src/app/Services/fundraiser/fundraiser.servic
 })
 export class FundraiserComponent implements OnInit {
 
-  public fundraiser : any;
+  public fundraiser : Fundraiser;
   constructor(private activatedRoute : ActivatedRoute, private fundraiserService : FundraiserService) { }
 
   ngOnInit(): void {
