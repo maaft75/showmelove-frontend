@@ -16,9 +16,9 @@ export class FundraiserComponent implements OnInit {
   ngOnInit(): void {
     this.activatedRoute.params.subscribe(
       (param) => {
-        console.log(param.fundraiserId);
+        //console.log(param.fundraiserId);
         this.fundraiserService.getFundraiserByFundraisingId(param.fundraiserId).subscribe(
-          data => {console.log(data); this.fundraiser = data}
+          data => {this.fundraiser = data}
         )
       }
     )
