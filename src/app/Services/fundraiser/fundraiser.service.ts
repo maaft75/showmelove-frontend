@@ -17,17 +17,14 @@ export class FundraiserService {
   constructor(private http : HttpClient, private auth : AuthService) { }
 
   getFundraiserByUser(id) : Observable<any>{
-    let headers = this.auth.getHeaders()
-    return this.http.get<any>(this.getFundraiserByUserUrl + "/" + id, {headers});
+    return this.http.get<any>(this.getFundraiserByUserUrl + "/" + id);
   }
 
   createFundraiser(data) : Observable<any>{
-    let headers = this.auth.getHeaders()
-    return this.http.post<any>(this.fundraiserUrl, data, {headers});
+    return this.http.post<any>(this.fundraiserUrl, data);
   }
 
   getFundraiserByFundraisingId(fundraisingId) : Observable<any>{
-    let headers = this.auth.getHeaders()
-    return this.http.get<any>(this.getFundraiserByFundraisingIdUrl + "/" + fundraisingId, {headers});
+    return this.http.get<any>(this.getFundraiserByFundraisingIdUrl + "/" + fundraisingId);
   }
 }

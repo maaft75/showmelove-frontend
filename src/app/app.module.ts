@@ -6,7 +6,7 @@ import { environment } from 'src/environments/environment';
 import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { AngularFireModule} from '@angular/fire';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { BrowserModule } from '@angular/platform-browser';
 import { AngularFireStorageModule } from '@angular/fire/storage';
 
@@ -23,6 +23,9 @@ import { PaymentresponseComponent } from './components/paymentresponse/paymentre
 import { CreatefundraiserComponent } from './components/createfundraiser/createfundraiser.component';
 import { FundraiserComponent } from './components/fundraiser/fundraiser.component';
 import { InitiatepaymentComponent } from './components/initiatepayment/initiatepayment.component';
+
+//Services
+import { HttperrorinterceptorService } from './Services/httperrorinterceptor/httperrorinterceptor.service'
 
 @NgModule({
   declarations: [
@@ -47,7 +50,11 @@ import { InitiatepaymentComponent } from './components/initiatepayment/initiatep
     RouterModule.forRoot(AppRoutes),
     AngularFireModule.initializeApp(environment.firebaseConfig)
   ],
-  providers: [],
+  providers: [{
+    provide: HTTP_INTERCEPTORS,
+    useClass: HttperrorinterceptorService,
+    multi: true
+  }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
