@@ -12,7 +12,7 @@
 
             <div>
                 <label for="cardno"><b>Card Number</b></label>
-                <input type="number" class="form-control" placeholder="Card Number" name="cardno" formControlName="cardno"><br/>
+                <input type="text" class="form-control" maxlength="16" placeholder="Card Number" name="cardno" formControlName="cardno"><br/>
             </div>
     
             <div class="alert alert-danger" *ngIf="cardno.touched && cardno.errors?.required">
@@ -21,7 +21,7 @@
 
             <div>
                 <label for="cvv"><b>CVV</b></label>
-                <input type="password" class="form-control" placeholder="CVV" name="cvv" formControlName="cvv"><br/>
+                <input type="password" maxlength="3" class="form-control" placeholder="CVV" name="cvv" formControlName="cvv"><br/>
             </div>
     
             <div class="alert alert-danger" *ngIf="cvv.touched && cvv.errors?.required">
@@ -30,7 +30,7 @@
 
             <div>
                 <label for="expirymonth"><b>Expiry Month</b></label>
-                <input type="number" class="form-control" placeholder="Expiry Month" name="expirymonth" formControlName="expirymonth"><br/>
+                <input type="text" maxlength="2" class="form-control" placeholder="Expiry Month" name="expirymonth" formControlName="expirymonth"><br/>
             </div>
     
             <div class="alert alert-danger" *ngIf="expirymonth.touched && expirymonth.errors?.required">
@@ -39,7 +39,7 @@
 
             <div>
                 <label for="expiryyear"><b>Expiry Year</b></label>
-                <input type="number" class="form-control" placeholder="Expiry Year" name="expiryyear" formControlName="expiryyear"><br/>
+                <input type="text" maxlength="2" class="form-control" placeholder="Expiry Year" name="expiryyear" formControlName="expiryyear"><br/>
             </div>
     
             <div class="alert alert-danger" *ngIf="expiryyear.touched && expiryyear.errors?.required">
@@ -123,7 +123,7 @@
 
                         <div class="col-sm-12">
                             <h5 style="text-align: center;"><b>Please input your PIN</b></h5>
-                            <input type="password" class="form-control" placeholder="Pin" name="pin" formControlName="pin"><br/>
+                            <input type="password" class="form-control" maxlength="4" placeholder="Pin" name="pin" formControlName="pin"><br/>
                         </div>
                 
                         <div class="alert alert-danger col-sm-12" *ngIf="pin.touched && pin.errors?.required">
@@ -134,7 +134,7 @@
                             <button type="submit" [disabled]="!donateFormWithPin.valid" class="col-sm-5 form-control btn btn-success" style="color: white;">Submit</button>
                         </div>
 
-                        <div class="col-sm-12" *ngIf="!button">
+                        <div class="col-sm-12" *ngIf="!buttonWithPin">
                             <button class="col-sm-12 btn btn-success" [disabled]>
                                 <img class="loading" src="https://firebasestorage.googleapis.com/v0/b/storeimagegallery.appspot.com/o/images%2Fae84325701f6d97ac4ad7e7951ac9063_w200.webp?alt=media&token=7eb12a30-3899-458a-8c5c-587c49e0b884"/>
                             </button>
@@ -159,18 +159,18 @@
 
                         <div class="col-sm-12">
                             <h5 style="text-align: center;"><b>{{chargeResponseMessage}}</b></h5>
-                            <input type="password" class="form-control" placeholder="OTP" name="otp" formControlName="otp"><br/>
+                            <input type="password" maxlength="6" class="form-control" placeholder="OTP" name="otp" formControlName="otp"><br/>
                         </div>
                 
                         <div class="alert alert-danger col-sm-12" *ngIf="otp.touched && otp.errors?.required">
-                            <small> PIN is required. </small><br/>
+                            <small> OTP is required. </small><br/>
                         </div>
         
                         <div class="formContent" *ngIf="validateWithOtpButton">
                             <button type="submit" [disabled]="!otpForm.valid" class="col-sm-5 form-control btn btn-success" style="color: white;">Submit</button>
                         </div>
 
-                        <div class="col-sm-12" *ngIf="!button">
+                        <div class="col-sm-12" *ngIf="!buttonWithOtp">
                             <button class="col-sm-12 btn btn-success" [disabled]>
                                 <img class="loading" src="https://firebasestorage.googleapis.com/v0/b/storeimagegallery.appspot.com/o/images%2Fae84325701f6d97ac4ad7e7951ac9063_w200.webp?alt=media&token=7eb12a30-3899-458a-8c5c-587c49e0b884"/>
                             </button>

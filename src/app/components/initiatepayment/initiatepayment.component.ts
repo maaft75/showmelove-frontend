@@ -26,6 +26,8 @@ export class InitiatepaymentComponent implements OnInit {
   New_current_amount : Number;
   donateFormWithPin : FormGroup;
   chargeResponseMessage : string;
+  buttonWithPin : boolean = true;
+  buttonWithOtp : boolean = true;
   initiateButton : boolean = true;
   pinModal : string = "display: none;";
   otpModal : string = "display: none;"
@@ -37,7 +39,7 @@ export class InitiatepaymentComponent implements OnInit {
     private paymentService : PaymentService,
     private fundraiserService : FundraiserService) {
       this.donateForm = this.fb.group({
-        "cardno": ["", Validators.required],
+        "cardno": ["", [Validators.required]],
         "cvv": ["", Validators.required],
         "expirymonth": ["", Validators.required],
         "expiryyear": ["", Validators.required],
@@ -88,8 +90,6 @@ export class InitiatepaymentComponent implements OnInit {
 
   }
 
-  //this.button = false;
-
   //INITIATE PAYMENT
   Initiate(){
     this.initiateButton = false;
@@ -136,7 +136,7 @@ export class InitiatepaymentComponent implements OnInit {
   //Initiate the payment PIN
   InitiateWithPin(){
     this.initiateWithPinButton = false;
-    this.button = false;
+    this.buttonWithPin = false;
     this.paymentService.initiateCardPaymentWithPin(this.donateFormWithPin.value).subscribe((response) =>
     {
       if(response.status == "success" && response.data.chargeResponseCode == "02"){
@@ -162,7 +162,7 @@ export class InitiatepaymentComponent implements OnInit {
   //Validate with OTP
   validateWithOtp(){
     this.validateWithOtpButton = false;
-    this.button = false;
+    this.buttonWithOtp = false;
     this.paymentService.validatePayment(this.otpForm.value).subscribe((response) => {
       if(response.status == "success" && response.message == "Charge Complete"){
 
