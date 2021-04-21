@@ -1,4 +1,5 @@
 <br/>
+
 <div class="majordiv">
         
     <div class="col-sm-9">
@@ -20,7 +21,7 @@
 
             <div>
                 <label for="cvv"><b>CVV</b></label>
-                <input type="number" class="form-control" placeholder="CVV" name="cvv" formControlName="cvv"><br/>
+                <input type="password" class="form-control" placeholder="CVV" name="cvv" formControlName="cvv"><br/>
             </div>
     
             <div class="alert alert-danger" *ngIf="cvv.touched && cvv.errors?.required">
@@ -59,6 +60,24 @@
             </div>
 
             <div>
+                <label for="firstname"><b>First Name</b></label>
+                <input type="text" class="form-control" placeholder="First Name" name="firstname" formControlName="firstname"><br/>
+            </div>
+    
+            <div class="alert alert-danger" *ngIf="firstname.touched && firstname.errors?.required">
+                <small> First Name is required. </small><br/>
+            </div>
+
+            <div>
+                <label for="lastname"><b>Last Name</b></label>
+                <input type="text" class="form-control" placeholder="Last Name" name="lastname" formControlName="lastname"><br/>
+            </div>
+    
+            <div class="alert alert-danger" *ngIf="lastname.touched && lastname.errors?.required">
+                <small> Last Name is required. </small><br/>
+            </div>
+
+            <div>
                 <label for="email"><b>Email</b></label>
                 <input type="email" class="form-control" placeholder="Email" name="email" formControlName="email"><br/>
             </div>
@@ -76,15 +95,94 @@
                 <small> Phone Number is required. </small><br/>
             </div>
             
-            <div>
-                <button type="submit" [disabled]="!donateForm.valid" class="form-control btn btn-success" style="color: white;">Submit</button>
+            <div *ngIf="initiateButton">
+                <button type="submit" [disabled]="!this.donateForm.value" class="form-control btn btn-success" style="color: white;">Submit</button>
+            </div>
+
+            <div class="col-sm-12" *ngIf="!button">
+                <button class="col-sm-12 btn btn-success" [disabled]>
+                    <img class="loading" src="https://firebasestorage.googleapis.com/v0/b/storeimagegallery.appspot.com/o/images%2Fae84325701f6d97ac4ad7e7951ac9063_w200.webp?alt=media&token=7eb12a30-3899-458a-8c5c-587c49e0b884"/>
+                </button>
             </div>
 
             <br>
             <br>
 
         </form>
+
+        <div id="myModal" class="modal" *ngIf="pinModal" [style]="pinModal">
+            
+            <div class="container modal-content col-sm-12">
+
+                <div (click)="closePinModal()" class="close">
+                    <span class="close">&times;</span>
+                </div>
+
+                <div class="formContent">
+                    <form [formGroup]="donateFormWithPin" (ngSubmit)="InitiateWithPin()">
+
+                        <div class="col-sm-12">
+                            <h5 style="text-align: center;"><b>Please input your PIN</b></h5>
+                            <input type="password" class="form-control" placeholder="Pin" name="pin" formControlName="pin"><br/>
+                        </div>
+                
+                        <div class="alert alert-danger col-sm-12" *ngIf="pin.touched && pin.errors?.required">
+                            <small> PIN is required. </small><br/>
+                        </div>
+        
+                        <div class="formContent" *ngIf="initiateWithPinButton">
+                            <button type="submit" [disabled]="!donateFormWithPin.valid" class="col-sm-5 form-control btn btn-success" style="color: white;">Submit</button>
+                        </div>
+
+                        <div class="col-sm-12" *ngIf="!button">
+                            <button class="col-sm-12 btn btn-success" [disabled]>
+                                <img class="loading" src="https://firebasestorage.googleapis.com/v0/b/storeimagegallery.appspot.com/o/images%2Fae84325701f6d97ac4ad7e7951ac9063_w200.webp?alt=media&token=7eb12a30-3899-458a-8c5c-587c49e0b884"/>
+                            </button>
+                        </div>
+    
+                    </form> 
+                </div>
+            </div>
+        </div>
+
+
+        <div id="myModal" class="modal" *ngIf="otpModal" [style]="otpModal">
+        
+            <div class="container modal-content col-sm-12">
+
+                <div (click)="closeOtpModal()" class="close">
+                    <span class="close">&times;</span>
+                </div>
+
+                <div class="formContent">
+                    <form [formGroup]="otpForm" (ngSubmit)="validateWithOtp()">
+
+                        <div class="col-sm-12">
+                            <h5 style="text-align: center;"><b>{{chargeResponseMessage}}</b></h5>
+                            <input type="password" class="form-control" placeholder="OTP" name="otp" formControlName="otp"><br/>
+                        </div>
+                
+                        <div class="alert alert-danger col-sm-12" *ngIf="otp.touched && otp.errors?.required">
+                            <small> PIN is required. </small><br/>
+                        </div>
+        
+                        <div class="formContent" *ngIf="validateWithOtpButton">
+                            <button type="submit" [disabled]="!otpForm.valid" class="col-sm-5 form-control btn btn-success" style="color: white;">Submit</button>
+                        </div>
+
+                        <div class="col-sm-12" *ngIf="!button">
+                            <button class="col-sm-12 btn btn-success" [disabled]>
+                                <img class="loading" src="https://firebasestorage.googleapis.com/v0/b/storeimagegallery.appspot.com/o/images%2Fae84325701f6d97ac4ad7e7951ac9063_w200.webp?alt=media&token=7eb12a30-3899-458a-8c5c-587c49e0b884"/>
+                            </button>
+                        </div>
+    
+                    </form> 
+                </div>
+            </div>
+          
+        </div>
     </div>
+
 </div>
 
 <br>

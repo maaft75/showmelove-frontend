@@ -9,5 +9,6 @@ export interface InitiateCardPaymentWithPin{
   email: string,
   firstname: string,
   lastname: string,
-  phonenumber: string
+  phonenumber: string,
+  suggested_auth : string
 }

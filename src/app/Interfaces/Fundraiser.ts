@@ -9,7 +9,7 @@ export interface Fundraiser {
     id: Number,
     image: String,
     link: String,
-    postalCode: 104211
+    postalCode: Number,
     purpose: String,
     title: String,
     type: String,

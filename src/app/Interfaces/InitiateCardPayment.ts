@@ -6,5 +6,8 @@ export interface InitiateCardPayment{
     currency: string,
     amount: string,
     email: string,
-    phonenumber: string
+    phonenumber: string,
+    txRef : string,
+    firstname : string,
+    lastname : string
   }

@@ -1,8 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from 'src/app/Services/auth/auth.service';
 import { FundraiserService } from 'src/app/Services/fundraiser/fundraiser.service';
-import { fundRaisersByLoggedInUser } from 'src/app/Models/FundRaisersByLoggedInUser';
-import { THIS_EXPR } from '@angular/compiler/src/output/output_ast';
+import { fundRaisersByLoggedInUser } from 'src/app/Interfaces/FundRaisersByLoggedInUser';
 
 @Component({
   selector: 'app-dashboard',

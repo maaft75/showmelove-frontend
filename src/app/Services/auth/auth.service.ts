@@ -1,9 +1,9 @@
 import { Observable } from 'rxjs';
 import { Injectable } from '@angular/core';
-import { User } from 'src/app/Models/User';
+import { User } from 'src/app/Interfaces/User';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
-import { Registration } from 'src/app/Models/Registration';
+import { Registration } from 'src/app/Interfaces/Registration';
 
 @Injectable({
   providedIn: 'root'

@@ -16,12 +16,16 @@ export class FundraiserService {
 
   constructor(private http : HttpClient, private auth : AuthService) { }
 
-  getFundraiserByUser(id) : Observable<any>{
-    return this.http.get<any>(this.getFundraiserByUserUrl + "/" + id);
+  patchFundRaiser(id, data){
+    return this.http.patch<any>(this.fundraiserUrl + id, data);
   }
 
   createFundraiser(data) : Observable<any>{
     return this.http.post<any>(this.fundraiserUrl, data);
+  }
+
+  getFundraiserByUser(id) : Observable<any>{
+    return this.http.get<any>(this.getFundraiserByUserUrl + "/" + id);
   }
 
   getFundraiserByFundraisingId(fundraisingId) : Observable<any>{

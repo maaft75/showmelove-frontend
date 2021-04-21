@@ -4,9 +4,10 @@
 
 export const environment = {
   production: false,
-  usersApiUrl : "https://192.168.43.121:444/api/v1/users/",
-  fundraisingApiUrl : "https://192.168.43.121:444/api/v1/fundraiser/",
   frontendUrl : "http://localhost:4200/",
+  usersApiUrl : "https://192.168.43.121:444/api/v1/users/",
+  paymentUrl : "https://192.168.43.121:444/api/v1/payment/",
+  fundraisingApiUrl : "https://192.168.43.121:444/api/v1/fundraiser/",
   firebaseConfig : {
     apiKey: "AIzaSyD1iaa_9vpSAAdGspHVJaCPDRWbUZFnYKc",
     authDomain: "image-repo-d5486.firebaseapp.com",

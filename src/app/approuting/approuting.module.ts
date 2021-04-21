@@ -14,7 +14,7 @@ export const AppRoutes : Routes = [
   {path : "home" , component : HomeComponent },
   {path : "signin" , component : LoginComponent },
   {path : "signup" , component : RegistrationComponent },
-  {path : "donate" , component : InitiatepaymentComponent},
+  {path : "donate/:fundraiserId" , component : InitiatepaymentComponent},
   {path : "fr/:fundraiserId", component : FundraiserComponent},
   {path : "paymentresponse" , component : PaymentresponseComponent},
   {path : "dashboard" , component : DashboardComponent, canActivate : [AuthGuard] },
