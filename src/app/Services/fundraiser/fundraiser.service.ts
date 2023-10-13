@@ -8,11 +8,12 @@ import {environment } from '../../../environments/environment';
 @Injectable({
   providedIn: 'root'
 })
+
 export class FundraiserService {
 
   private fundraiserUrl : string = environment.fundraisingApiUrl;
-  private getFundraiserByUserUrl : string = environment.fundraisingApiUrl + "GetFundRaisingByUser";
-  private getFundraiserByFundraisingIdUrl : string = environment.fundraisingApiUrl + "GetFundRaisingByFundraisingId"
+  private getFundraiserByUserUrl : string = environment.fundraisingApiUrl + "getbyuser";
+  private getFundraiserByFundraisingIdUrl : string = environment.fundraisingApiUrl + "getbyfundraiserid"
 
   constructor(private http : HttpClient, private auth : AuthService) { }
 

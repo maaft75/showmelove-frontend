@@ -12,7 +12,7 @@ export class AuthService {
 
   private userUrl : string = environment.usersApiUrl;
   private loginUrl : string = environment.usersApiUrl + "login";
-  private registrationUrl : string = environment.usersApiUrl + "registration";
+  private registrationUrl : string = environment.usersApiUrl + "register";
 
   constructor(private http : HttpClient) { }
 
@@ -25,7 +25,7 @@ export class AuthService {
   }
 
   getUserDetails(id : Number) : Observable<any>{
-    return this.http.get<any>(this.userUrl + id);
+    return this.http.get<any>(this.userUrl + `getuser?id=${id}`);
   }
 
   saveToken(token){

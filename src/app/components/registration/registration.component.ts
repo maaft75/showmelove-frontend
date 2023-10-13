@@ -22,7 +22,8 @@ export class RegistrationComponent implements OnInit {
       "Last_Name" : ["", Validators.required],
       "Email_Address" : ["", Validators.required],
       "Phone_Number" : ["", Validators.required],
-      "Password" : ["", Validators.required]
+      "Password" : ["", Validators.required],
+      "country_Code" : ["234", Validators.required]
     })
 
    }
@@ -33,13 +34,13 @@ export class RegistrationComponent implements OnInit {
   Register(){
     this.loaderImage = true;
     this.auth.registration(this.registrationForm.value).subscribe(
-      (data) => { 
-        alert(`Registration Complete, Please Click on OK to Proceed To Login, ${data.first_Name}.`);
+      (data) => {
+        console.log(data.data)
+        alert(`Registration Complete, Please Click on OK to Proceed To Login, ${data.data.First_Name}.`);
         this.router.navigate(["signin"]);
       },
       (error) => {
-        console.log(error); 
-        alert(error["error"].error);
+        alert(error.error.message);
         location.reload();
       }
     )

@@ -1,9 +1,9 @@
 export const environment = {
   production: true,
   frontendUrl : "https://showmelove.netlify.app/",
-  usersApiUrl : "https://crowdfunding-backend.herokuapp.com/api/v1/users/",
-  paymentUrl : "https://crowdfunding-backend.herokuapp.com/api/v1/payment/",
-  fundraisingApiUrl : "https://crowdfunding-backend.herokuapp.com/api/v1/fundraiser/",
+  usersApiUrl : "https://crowdfunding.azurewebsites.net/api/users/",
+  paymentUrl : "https://crowdfunding.azurewebsites.net/api/payment/",
+  fundraisingApiUrl : "https://crowdfunding.azurewebsites.net/api/fundraisers/",
   firebaseConfig : {
     apiKey: "AIzaSyD1iaa_9vpSAAdGspHVJaCPDRWbUZFnYKc",
     authDomain: "image-repo-d5486.firebaseapp.com",

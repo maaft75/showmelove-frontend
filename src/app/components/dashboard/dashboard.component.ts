@@ -23,7 +23,7 @@ export class DashboardComponent implements OnInit {
     //Get Logged in User
     this.authService.getUserDetails(Number(this.Id)).subscribe(
       (data) => { 
-        this.loggedInUser = data.first_Name + " " + data.last_Name;
+        this.loggedInUser = data['data'].first_Name + " " + data['data'].last_Name;
     })
 
     //Get Fundraiser created by Logged in User

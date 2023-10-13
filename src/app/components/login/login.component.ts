@@ -37,7 +37,7 @@ export class LoginComponent implements OnInit {
         alert(`Logged in successfully`);
     },
       (error) => { 
-        alert(`${error.error.error}`); 
+        alert(`${error.error.message}`); 
         location.reload();
     }
     )}
